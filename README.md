@@ -40,7 +40,7 @@ Python libraries used: NumPy, Pandas, Seaborn, Matplotlib, Statsmodels
 
 One of the first things I noticed when I took a look at the data was that the `Mechanics` and `Domains` columns contained lists of game mechanics and domains. The biggest challenge of this project was to flatten those lists and use one hot encoding to convert this data into a usable form for a regression model. In addition, there were 183 game mechanics - too many for me to deal with - so I limited it to the 16 mechanics that appeared in over 1000 games.
 
-When I ran summary statistics on my dataframe, I noticed minimum values of 0 that didn’t make sense, for example in `Max Players` and `Play Time`. I concluded that these columns had 0s in place of missing values so I replaced the 0s with NaNs. After checking whether the missing values were biased to the Average Rating or to any particular game domain or mechanic, I decided to remove the rows with missing values. For a deeper look into this process, please see my Jupyter notebook: Dealing with Missing Values.
+When I ran summary statistics on my dataframe, I noticed minimum values of 0 that didn’t make sense, for example in `Max Players` and `Play Time`. I concluded that these columns had 0s in place of missing values so I replaced the 0s with NaNs. After checking whether the missing values were biased to the Average Rating or to any particular game domain or mechanic, I decided to remove the rows with missing values. For a deeper look into this process, please see my [Jupyter notebook](https://github.com/lorimcco/Board-Game-Project/blob/main/BoardGameProject.ipynb): Dealing with Missing Values.
 
 On a side note, my summary statistics also revealed some very interesting outliers in the data. For example, I found that there are games in the BGG database with negative `Year Published`. This refers to ancient games that were first played in years BCE, such as Go and Backgammon! Also, did you know that there are games that take up to 60,000 hours to play? That’s over 40 days!
 
@@ -53,8 +53,8 @@ The dependent variable for the regression model is `Rating Average`. I went thro
 
 The final linear regression model used the following independent variables to predict the BGG Average Rating: 
 - Game Characteristics: Year Published, Min Players, Min Age, Complexity Average, Owned Users
-- Game  Mechanics: Area Majority/Influence, Area Movement, Card Drafting, Cooperative Game, Dice Rolling, Hand Management, Hexagon Grid, Roll/Spin and Move, Simulation, Unspecified Mechanics
-- Game Domains: Variable Player Powers, Children's Games, Customizable Games, Family Games, Party Games, Thematic Games, Unclassified Games
+- Game  Mechanics: Area Majority/Influence, Area Movement, Card Drafting, Cooperative Game, Dice Rolling, Hand Management, Hexagon Grid, Roll/Spin and Move, Simulation, Unspecified Mechanics, Variable Player Powers
+- Game Domains: Children's Games, Customizable Games, Family Games, Party Games, Thematic Games, Unclassified Games
 
 The model shows a weak correlation (adjusted R-squared = 0.362) between these variables and the Average Rating. The model and all its coefficients are statistically significant.
 
